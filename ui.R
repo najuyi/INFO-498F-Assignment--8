@@ -1,13 +1,15 @@
 library(shiny)
 library(plotly)
 data <- iris
+# Parses out column names to be used in the shiny input select function
 sepal <- colnames(data)[1:2]
 petal <- colnames(data)[3:4]
+# Decalres shinyui
 shinyUI(fluidPage(
   titlePanel("Iris"),
   # Decalres the layout 
   sidebarLayout(
-    # Place widgets here
+    # Placed widgets here
     sidebarPanel(
       "Iris Power",
       selectInput("Petal", label = h3("Petal"),
@@ -17,8 +19,10 @@ shinyUI(fluidPage(
     ),
     # Put pretty stuff here I.E. graphs
     mainPanel(
-      "Big Iris",
-      plotlyOutput('iris')
+      tabsetPanel(
+        tabPanel("Scatter", plotlyOutput("scatter")),
+        tabPanel("3D Plot", plotlyOutput("plot"))
+      )
     )
   )
 ))

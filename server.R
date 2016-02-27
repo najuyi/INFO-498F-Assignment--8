@@ -1,11 +1,14 @@
-library(dplyr)
 library(shiny)
 library(plotly)
 data <- iris
-source("C:/Users/Administrator.UWIT-H9T8A7AKQR/Documents/Code/INFO 498F/INFO-498F-Assignment--8/scripts/build_graph.r")
-
+source("scripts/build_graph.r")
+# Takes in input from ui and generates output to the ui
 shinyServer(function(input, output) {
-  output$iris <- renderPlotly({
-    build_graph(data, input$Petal, input$Sepal)
+  output$scatter <- renderPlotly({
+    build_scatter(data, input$Petal, input$Sepal)
   })
+  output$plot <- renderPlotly({
+    build_3d(data, input$Petal, input$Sepal)
+  })
+  
 })
