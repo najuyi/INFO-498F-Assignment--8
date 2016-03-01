@@ -1,7 +1,7 @@
 library(shiny)
 library(plotly)
 data <- iris
-source("scripts/build_graph.r")
+source("scripts/build_graph.R")
 # Takes in input from ui and generates output to the ui
 shinyServer(function(input, output) {
   output$scatter <- renderPlotly({
